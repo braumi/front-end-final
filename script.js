@@ -160,7 +160,7 @@ class HouseVisualizationApp {
 
   updateView() {
     const view = this.houseViews[this.currentViewIndex];
-    const imagePath = `./house views/${this.currentColor}-${view.file}.png`;
+    const imagePath = `./components/house views/${this.currentColor}-${view.file}.png`;
     
     const houseImage = document.getElementById('house-view-image');
     const viewTitle = document.getElementById('view-title');
