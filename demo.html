@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI House Visualization Demo | Interactive 3D Builder</title>
+    <meta name="description" content="Experience AI-powered house visualization. Chat with our AI assistant and explore 3D models from every angle." />
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="styles.css" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navigation">
+      <button class="nav-btn" onclick="window.location.href='index.html'">
+        Main
+      </button>
+      <button class="nav-btn active" onclick="window.location.href='demo.html'">
+        Demo
+      </button>
+    </nav>
+
+    <!-- Demo Page Content -->
+    <div class="page demo-page">
+      <div class="chat-left-layout">
+        <!-- AI Chatbox -->
+        <div class="ai-chatbox">
+          <div class="chatbox-header">
+            <div class="chatbox-title">AI Assistant</div>
+            <div class="status-line">
+              <div class="ai-indicator"></div>
+              <span class="chatbox-status">Online</span>
+            </div>
+          </div>
+          
+          <div class="chatbox-messages" id="chatbox-messages">
+            <div class="message">
+              <div class="message-avatar">AI</div>
+              <div class="message-content">
+                Hello! I'm your AI architecture assistant. Describe the building you'd like to visualize and I'll help you create it. You can describe the style, materials, layout, or any specific features you want.
+              </div>
+            </div>
+          </div>
+          
+          <div class="chatbox-input">
+            <div class="input-container">
+              <input type="text" id="chat-input" placeholder="Describe your building..." />
+              <button class="send-btn" id="send-btn">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Content Area -->
+        <div class="right-content">
+          <!-- Visualization Area -->
+          <div class="visualization-area">
+            <div class="viz-header">
+              <div class="viz-status">
+                <div class="status-indicator active"></div>
+                <span>Model Ready</span>
+              </div>
+              <div class="viz-actions">
+                <button class="viz-btn" id="reset-btn">Reset View</button>
+                <button class="viz-btn" id="download-btn">Download</button>
+              </div>
+            </div>
+            
+            <!-- Upload Section -->
+            <div class="upload-section" id="upload-section">
+              <h3>Start Your Visualization</h3>
+              <p>Upload an image or describe your dream home to our AI assistant</p>
+              <div class="upload-btn">Choose File or Describe</div>
+            </div>
+            
+            <!-- 3D Model Viewport -->
+            <div class="model-viewport" id="model-viewport" style="display: none;">
+              <div class="model-container">
+                <img src="./house views/Blue-North.png" alt="House Model" class="house-model" id="house-model" />
+              </div>
+            </div>
+            
+            <!-- Loading Section -->
+            <div class="loading-section" id="loading-section">
+              <div class="loading-spinner"></div>
+              <div class="loading-content">
+                <h3>Generating Your Model</h3>
+                <p>AI is creating your architectural visualization...</p>
+              </div>
+            </div>
+            
+            <!-- House Viewer Section -->
+            <div class="viewer-section" id="viewer-section">
+              <div class="view-navigation">
+                <button class="nav-arrow" id="prev-view">‹</button>
+                <div class="view-info">
+                  <h3 id="view-title">North View</h3>
+                  <p id="view-description">Front elevation of the building</p>
+                </div>
+                <button class="nav-arrow" id="next-view">›</button>
+              </div>
+              
+              <img src="./house views/Blue-North.png" alt="House View" id="house-view-image" />
+              
+              <div class="view-indicators">
+                <div class="view-dot active" data-view="0"></div>
+                <div class="view-dot" data-view="1"></div>
+                <div class="view-dot" data-view="2"></div>
+                <div class="view-dot" data-view="3"></div>
+                <div class="view-dot" data-view="4"></div>
+                <div class="view-dot" data-view="5"></div>
+                <div class="view-dot" data-view="6"></div>
+                <div class="view-dot" data-view="7"></div>
+                <div class="view-dot" data-view="8"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Material Suggestions -->
+          <div class="material-suggestions" id="material-suggestions">
+            <div class="suggestions-header">
+              <h4>Recommended Materials</h4>
+              <p>Click to apply different roof materials to your model</p>
+            </div>
+            <div class="suggestions-grid">
+              <div class="suggestion-box" data-material="shingle">
+                <img src="./suggestions/03914_-_roof_jpg.webp" alt="Asphalt Shingle" />
+              </div>
+              <div class="suggestion-box" data-material="tile">
+                <img src="./suggestions/03915_-_roof_jpg.webp" alt="Clay Tile" />
+              </div>
+              <div class="suggestion-box" data-material="metal">
+                <img src="./suggestions/BM-00038609_-_roof_jpg.webp" alt="Metal Roofing" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mouse Follower -->
+    <div class="mouse-follower"></div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html> 
